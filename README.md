@@ -2,6 +2,10 @@
 
 A modern, responsive personal portfolio website built with React and Vite to showcase my skills, projects, and expertise as a full-stack developer.
 
+## 🌐 Live Demo
+
+**Visit the live website:** [https://adityadhikale.netlify.app/](https://adityadhikale.netlify.app/)
+
 ![Portfolio Preview](./src/assets/images/portfolio-preview.png)
 
 ## 🌟 Features
@@ -99,8 +103,8 @@ yarn test
 
 ## 🔄 Deployment
 
-This portfolio can be easily deployed on platforms like:
-- Netlify
+This portfolio is currently deployed on Netlify. You can also deploy it on other platforms like:
+- Netlify (current host)
 - Vercel
 - GitHub Pages
 - Firebase Hosting
@@ -114,6 +118,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Aditya Dhikale - adityadhikale03@gmail.com
 
 Project Link: [https://github.com/adityadhikale/portfolio](https://github.com/adityadhikale/portfolio)
+
+Live Website: [https://adityadhikale.netlify.app/](https://adityadhikale.netlify.app/)
 
 ---
 
