@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+:root {
+  --primary: #646cff;
+  --primary-hover: #535bf2;
+  --text-base: #f8fafc;
+  --bg-base: #0f172a;
+}
+
+/* Tech stack card styles */
+.tech-card {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+  isolation: isolate;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+
+/* Add spacing control for the tech stack grid */
+.tech-stack-grid {
+  position: relative;
+  isolation: isolate;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+}
+
+/* Update the grid item styles */
+.tech-stack-grid > * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  margin: 0;
+  height: 100%;
+  padding-bottom: 1.5rem; /* Space for proficiency text */
+}
+
+/* Tech stack responsive styles for mobile */
+@media (max-width: 639px) {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  /* Optimize animations for mobile */
+  .tech-card {
+    @apply hover:shadow-none;
+  }
+  
+  /* Hide proficiency text on mobile to save space */
+  .proficiency-text {
+    display: none;
+  }
+}
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50;
+    @apply min-h-screen;
+    @apply transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  
+  /* Prevent hover effects from affecting neighbors */
+  .grid > * {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center;
+    @apply text-slate-900 dark:text-white;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden;
+    @apply border border-slate-200 dark:border-slate-700;
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+}
+
+/* For selection styling */
+::selection {
+  @apply bg-indigo-500 text-white;
+}
+
+/* Typewriter effect styling */
+.typewriter-text {
+  @apply font-semibold;
+}
+
+.typewriter-cursor {
+  @apply animate-pulse;
+}
