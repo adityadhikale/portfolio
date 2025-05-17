@@ -30,7 +30,7 @@ const education = [
     period: '2021 - 2025',
     degree: 'Bachelor of Technology in Computer Science',
     institution: 'Fr. Conceicao Rodrigues College of Engineering, Mumbai',
-    description: 'Graduated with "Data Science Honors. Focused on web development, algorithms, and data structures.',
+    description: 'Graduated with Data Science Honors. Focused on web development, algorithms, and data structures.',
   },
   {
     period: '2019 - 2021',
