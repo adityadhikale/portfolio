@@ -22,7 +22,7 @@ const projectsData = [
     {
     id: 3,
     name: 'Expense Manager',
-    description: 'A personal finance application that helps users track expenses and visualize spending patterns. Implemented OCR receipt scanning with Tesseract.js, created automated ML-based transaction categorization, built interactive charts for financial analysis, and designed a mobile-first responsive UI with offline capability.',
+    description: 'A personal finance management platform that helps users track their spending and income. It offers features like transaction tracking, categorization, budget visualization, and CSV import to simplify money management. Designed to provide a clear financial overview and promote better financial habits.',
     image: expenseManagerImage,
     tech_stack: ['React 18.2', 'Express 4.18', 'MongoDB Atlas', 'Node.js 18', 'Chart.js 4.3', 'Firebase Auth 9.17', 'Tesseract.js 4.1'],
     github_url: 'https://github.com/adityadhikale/Expense-Manager',
@@ -32,7 +32,7 @@ const projectsData = [
       {
     id: 4,
     name: 'Wild Track',
-    description: 'A comprehensive fitness tracking platform with wearable device integration. Engineered a custom algorithm for workout effectiveness scoring, built a Python microservice for data analysis, developed a responsive dashboard with realtime updates, and implemented device sync with Google Fit API and Apple HealthKit.',
+    description: 'A sleek and responsive music streaming application that allows users to discover and enjoy a wide range of tracks. The interface emphasizes ease of use and smooth navigation, creating a comfortable listening experience for casual users and music lovers alike. Perfect for exploring songs in a simple, no-fuss environment.',
     image: wildTrackImage,
     tech_stack: ['React 18.2', 'Node.js 18', 'Express 4.18', 'MongoDB Atlas', 'Google Fit API', 'TailwindCSS 3.3', 'Python FastAPI'],
     github_url: 'https://github.com/adityadhikale/WildTrack',
@@ -42,9 +42,9 @@ const projectsData = [
     {
     id: 5,
     name: 'Cool Climate',
-    description: 'A modern weather application with emphasis on visual data presentation and user experience. Built a custom location-based weather forecasting system, implemented interactive radar maps with Mapbox GL, developed a dynamic UI that adapts to current weather conditions, and optimized for PWA with offline capability.',
+    description: 'A professionally designed service website for an air conditioning repair and maintenance business. It clearly showcases services, customer benefits, and contact details, aimed at building trust and converting visitors into clients. The layout ensures that users quickly find what they need while reinforcing the credibility of the brand.',
     image: coolClimateImage,
-    tech_stack: ['React 18.2', 'TypeScript 5.0', 'TailwindCSS 3.3', 'OpenWeather API', 'Chart.js 4.3', 'Mapbox GL JS 2.14'],
+    tech_stack: ['React 18.2', 'TypeScript 5.0', 'TailwindCSS 3.3', 'OpenWeather API', 'Chart.js 4.3',],
     github_url: 'https://github.com/adityadhikale/coolclimate',
     demo_url: 'https://coolclimate.vercel.app/',
     category: 'frontend'
@@ -52,9 +52,9 @@ const projectsData = [
   {
     id: 1,
     name: 'Wild Cart',
-    description: 'A full-featured e-commerce platform built with the MERN stack. Implemented advanced features including role-based authentication, real-time inventory updates with WebSockets, secure Stripe payment integration, image optimization, and a responsive admin dashboard for order management.',
+    description: 'A feature-rich e-commerce application that allows users to browse, search, and shop for a variety of products across categories. Includes product detail pages, shopping cart functionality, and a polished interface that mirrors a real-world online store experience. Ideal for simulating the customer journey in an online retail space.',
     image: wildCartImage,
-    tech_stack: ['React 18.2', 'Redux Toolkit 1.9', 'Node.js 18', 'Express 4.18', 'MongoDB Atlas', 'JWT', 'Stripe API v3'],
+    tech_stack: ['React 18.2', 'Redux Toolkit 1.9', 'Node.js 18', 'Express 4.18'],
     github_url: 'https://github.com/adityadhikale/WildCart',
     demo_url: 'https://adityadhikale.github.io/WildCart/',
     category: 'fullstack'
@@ -62,9 +62,9 @@ const projectsData = [
   {
     id: 2,
     name: 'Wild Songs',
-    description: 'A Spotify-inspired music streaming application with real-time features. Developed a custom audio visualizer using WebGL shaders, implemented collaborative playlists with Socket.io for real-time updates, and built recommendation algorithms using TensorFlow.js for personalized music discovery.',
+    description: 'A Spotify-inspired lightweight music streaming application with real-time features. Developed a custom audio visualizer using WebGL shaders, implemented collaborative playlists with Socket.io for real-time updates, and built recommendation algorithms using TensorFlow.js for personalized music discovery.',
     image: wildSongsImage,
-    tech_stack: ['React 18.2', 'Node.js 18', 'Express 4.18', 'MongoDB', 'Web Audio API', 'Socket.io 4.6', 'TensorFlow.js 4.2'],
+    tech_stack: ['React 18.2', 'Node.js 18', 'Express 4.18', 'Supabase', 'Web Audio API', 'Socket.io 4.6', 'TensorFlow.js 4.2'],
     github_url: 'https://github.com/adityadhikale/WildSongs',
     demo_url: 'https://wildsongs.netlify.app/',
     category: 'fullstack'
@@ -72,7 +72,7 @@ const projectsData = [
   {
     id: 6,
     name: 'Daily Dose',
-    description: 'A Progressive Web App news aggregator with AI-driven content personalization. Implemented service workers for complete offline reading functionality, built a machine learning model for content recommendation, created a responsive UI with theme switching, and developed a summarization algorithm to generate article previews.',
+    description: 'A modern news aggregator app that delivers up-to-date headlines from various sources across the web. Users can search for specific topics, filter by categories, and scroll through an endless feed of articles. The interface makes staying informed easy and engaging, all in one place.',
     image: dailyDoseImage,
     tech_stack: ['React 18.2', 'JavaScript ES2022', 'Firebase 9.19', 'NewsAPI', 'PWA', 'Workbox 6.5', 'TensorFlow.js 4.2'],
     github_url: 'https://github.com/adityadhikale/daily-dose',
@@ -82,7 +82,7 @@ const projectsData = [
   {
     id: 7,
     name: 'Wild Notes',
-    description: 'A lightweight yet powerful note-taking application with markdown support. Engineered a custom rich text editor with markdown support, implemented efficient browser storage with IndexedDB for large notes, built a full-text search engine with relevance scoring, and created a responsive UI optimized for both desktop and mobile.',
+    description: 'A straightforward and efficient note-taking tool designed for quick thoughts, to-do lists, or daily journaling. Users can create, edit, and delete notes with ease, keeping information organized and accessible. Great for students, developers, or anyone who likes to stay productive with minimal distractions.',
     image: wildNotesImage,
     tech_stack: ['JavaScript ES2022', 'HTML5', 'CSS3', 'IndexedDB', 'LocalStorage', 'Marked.js 4.3', 'Highlight.js 11.7'],
     github_url: 'https://github.com/adityadhikale/WildNotes',

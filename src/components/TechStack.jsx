@@ -110,7 +110,7 @@ const techStackData = {
     { 
       name: 'Jira', 
       icon: 'siJira', 
-      level: 55, 
+      level: 30, 
       color: '#0052CC' 
     },
     { 
