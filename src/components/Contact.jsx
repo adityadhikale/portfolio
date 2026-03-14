@@ -1,384 +1,85 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-} from '@heroicons/react/24/outline';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './shared/SocialIcons';
+import { motion } from 'framer-motion';
+import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 
-const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState(null); // null, 'success', 'error'
-  
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors }
-  } = useForm();
-  
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setFormStatus(null);
-    
-    // Simulate API call delay
-    try {
-      // In a real app, you would call your API endpoint here
-      // await axios.post('/api/contact', data);
-      console.log('Form data submitted:', data);
-      
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Clear form and show success message
-      reset();
-      setFormStatus('success');
-      setTimeout(() => setFormStatus(null), 5000); // Clear success message after 5 seconds
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setFormStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-  
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 50,
-        damping: 10,
-      },
-    },
-  };
-  
-  // Contact info
-  const contactInfo = [
-    {
-      icon: <EnvelopeIcon className="w-6 h-6" />,
-      title: 'Email',
-      value: 'adityadhikale2003@gmail.com',
-      link: 'mailto:adityadhikale2003@gmail.com',
-    },
-    {
-      icon: <PhoneIcon className="w-6 h-6" />,
-      title: 'Phone',
-      value: '+91 7620335644',
-      link: 'tel:+917620335644',
-    },
-  ];
-  
-  // Social links
-  const socialLinks = [
-    {
-      icon: <GithubIcon className="w-6 h-6" />,
-      name: 'GitHub',
-      url: 'https://github.com/adityadhikale',
-    },
-    {
-      icon: <LinkedinIcon className="w-6 h-6" />,
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/aditya-dhikale-674643288', // Replace with actual LinkedIn URL
-    },
-    {
-      icon: <TwitterIcon className="w-6 h-6" />,
-      name: 'Twitter',
-      url: 'https://x.com/adityadhikale03', // Replace with actual Twitter URL
-    },
-  ];
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
+const socials = [
+  { name: 'GitHub', href: 'https://github.com/adityadhikale', icon: 'M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/in/adityadhikale', icon: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+];
+
+export default function Contact() {
   return (
-    <section id="contact" className="container-section bg-slate-50 dark:bg-slate-900">
-      <motion.h2
-        className="section-heading"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        Contact Me
-      </motion.h2>
-      
-      <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-        {/* Contact Information */}
+    <section id="contact" className="relative">
+      <div className="section-container">
         <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ staggerChildren: 0.15 }}
         >
-          <motion.h3 
-            variants={itemVariants}
-            className="text-2xl font-bold mb-6 text-slate-900 dark:text-white"
-          >
-            Let's Get in Touch
-          </motion.h3>
-          
-          <motion.p
-            variants={itemVariants}
-            className="text-slate-600 dark:text-slate-300 mb-8"
-          >
-            Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+          <motion.h2 variants={fadeUp} className="section-title">
+            Get in <span className="gradient-text">Touch</span>
+          </motion.h2>
+          <motion.p variants={fadeUp} className="section-subtitle">
+            Have a project in mind or just want to connect? I'd love to hear from you.
           </motion.p>
-          
-          {/* Contact Details */}
-          <div className="space-y-6 mb-8">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="flex items-start"
-              >
-                <div className="flex-shrink-0 p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mr-4">
-                  <span className="text-indigo-600 dark:text-indigo-400">
-                    {info.icon}
-                  </span>
+
+          <motion.div variants={fadeUp} className="max-w-2xl mx-auto">
+            <div className="glass-card p-8 md:p-10 rounded-2xl text-center">
+              {/* Email CTA */}
+              <div className="mb-8">
+                <div className="w-16 h-16 mx-auto mb-5 rounded-2xl accent-gradient flex items-center justify-center">
+                  <EnvelopeIcon className="w-7 h-7 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                    {info.title}
-                  </h4>
-                  <a
-                    href={info.link}
-                    className="text-lg font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  >
-                    {info.value}
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Social Links */}
-          <motion.div variants={itemVariants}>
-            <h4 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">
-              Connect with me
-            </h4>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-slate-800 rounded-full text-slate-700 hover:text-indigo-600 dark:text-slate-200 dark:hover:text-indigo-400 border border-slate-200 dark:border-slate-700 hover:border-indigo-600 dark:hover:border-indigo-400 transition-colors shadow-sm hover:shadow"
-                  aria-label={social.name}
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.95 }}
+                <h3 className="font-display font-semibold text-xl text-slate-900 dark:text-white mb-2">
+                  Let's work together
+                </h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                  Feel free to reach out for collaborations, opportunities, or just a friendly chat.
+                </p>
+                <a
+                  href="mailto:adityadhikale2003@gmail.com"
+                  className="inline-flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white accent-gradient rounded-xl hover:opacity-90 transition-opacity"
                 >
-                  {social.icon}
-                </motion.a>
-              ))}
+                  <EnvelopeIcon className="w-4 h-4" />
+                  adityadhikale2003@gmail.com
+                </a>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-slate-200/50 dark:border-white/10 pt-8">
+                {/* Location */}
+                <div className="flex items-center justify-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-6">
+                  <MapPinIcon className="w-4 h-4" />
+                  Mumbai, India
+                </div>
+
+                {/* Social links */}
+                <div className="flex justify-center gap-4">
+                  {socials.map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-xl glass text-slate-500 hover:text-accent-500 dark:text-slate-400 dark:hover:text-accent-400 transition-colors"
+                      aria-label={s.name}
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d={s.icon} />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
-        
-        {/* Contact Form */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 md:p-8">
-            <motion.h3 
-              variants={itemVariants}
-              className="text-2xl font-bold mb-6 text-slate-900 dark:text-white"
-            >
-              Send me a Message
-            </motion.h3>
-            
-            {/* Form Status Messages */}
-            <AnimatePresence>
-              {formStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900/30 rounded-md text-green-800 dark:text-green-200 flex items-center"
-                >
-                  <CheckCircleIcon className="w-5 h-5 mr-2 flex-shrink-0" />
-                  <p>Thank you! Your message has been sent successfully.</p>
-                </motion.div>
-              )}
-              
-              {formStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-md text-red-800 dark:text-red-200 flex items-center"
-                >
-                  <ExclamationCircleIcon className="w-5 h-5 mr-2 flex-shrink-0" />
-                  <p>Oops! Something went wrong. Please try again later.</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            
-            {/* Contact Form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Name Input */}
-              <motion.div variants={itemVariants}>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className={`w-full px-4 py-2 rounded-md border ${
-                    errors.name
-                      ? 'border-red-500 dark:border-red-400 focus:ring-red-500 focus:border-red-500'
-                      : 'border-slate-300 dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500'
-                  } bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors`}
-                  placeholder="Your name"
-                  {...register('name', { required: 'Name is required' })}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.name.message}
-                  </p>
-                )}
-              </motion.div>
-              
-              {/* Email Input */}
-              <motion.div variants={itemVariants}>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className={`w-full px-4 py-2 rounded-md border ${
-                    errors.email
-                      ? 'border-red-500 dark:border-red-400 focus:ring-red-500 focus:border-red-500'
-                      : 'border-slate-300 dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500'
-                  } bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors`}
-                  placeholder="Your email"
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address',
-                    },
-                  })}
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.email.message}
-                  </p>
-                )}
-              </motion.div>
-              
-              {/* Subject Input */}
-              <motion.div variants={itemVariants}>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className={`w-full px-4 py-2 rounded-md border ${
-                    errors.subject
-                      ? 'border-red-500 dark:border-red-400 focus:ring-red-500 focus:border-red-500'
-                      : 'border-slate-300 dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500'
-                  } bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors`}
-                  placeholder="Subject of your message"
-                  {...register('subject', { required: 'Subject is required' })}
-                />
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.subject.message}
-                  </p>
-                )}
-              </motion.div>
-              
-              {/* Message Textarea */}
-              <motion.div variants={itemVariants}>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows="5"
-                  className={`w-full px-4 py-2 rounded-md border ${
-                    errors.message
-                      ? 'border-red-500 dark:border-red-400 focus:ring-red-500 focus:border-red-500'
-                      : 'border-slate-300 dark:border-slate-600 focus:ring-indigo-500 focus:border-indigo-500'
-                  } bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-colors resize-none`}
-                  placeholder="Your message"
-                  {...register('message', {
-                    required: 'Message is required',
-                    minLength: {
-                      value: 10,
-                      message: 'Message should be at least 10 characters',
-                    },
-                  })}
-                ></textarea>
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                    {errors.message.message}
-                  </p>
-                )}
-              </motion.div>
-              
-              {/* Submit Button */}
-              <motion.div variants={itemVariants}>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-3 px-6 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors ${
-                    isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    'Send Message'
-                  )}
-                </button>
-              </motion.div>
-            </form>
-          </div>
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}
