@@ -11,7 +11,8 @@ import dailyDoseImg from '../assets/images/projects/dailydose.png';
 import wildNotesImg from '../assets/images/projects/WildNotes.png';
 import wildTextImg from '../assets/images/projects/wildtext.png';
 import wildShapesImg from '../assets/images/projects/wildshapes.png';
-import Vidyagram  from '../assets/images/projects/Vidyagram .png';
+import Vidyagram from '../assets/images/projects/Vidyagram.png';
+import digitalgifts from '../assets/images/projects/digitalgifts.png';
 
 const projectsData = [
   {
@@ -60,17 +61,28 @@ const projectsData = [
   },
   {
     id: 5,
-    name: 'Wild Track',
-    description: 'A music streaming application with playlist management, audio player controls, and a clean UI for discovering and playing tracks.',
-    image: wildTrackImg,
-    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/adityadhikale/WildTrack',
-    demo: null,
+    name: 'Digital Gifts',
+    description: 'Digital Gifts is Full-stack web app to create & share personalized digital gifts with a multi-step builder, live preview, and animated reveal. Built with Next.js, TypeScript, Supabase & Framer Motion.',
+    image: digitalgifts,
+    tech: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Supabase', 'Vercel'],
+    github: 'https://github.com/adityadhikale/digital-gifts',
+    demo: 'https://digitalgifts.vercel.app/',
     category: 'fullstack',
     featured: false,
   },
   {
     id: 6,
+    name: 'OnTrack',
+    description: 'A music streaming application with playlist management, audio player controls, and a clean UI for discovering and playing tracks.',
+    image: wildTrackImg,
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/adityadhikale/WildTrack',
+    demo: 'https://wildtrack.netlify.app/',
+    category: 'fullstack',
+    featured: false,
+  },
+  {
+    id: 7,
     name: 'Cool Climate',
     description: 'Professionally designed AC service website with modern UI. Built with React and TypeScript, featuring responsive design, service showcase, and customer conversion focus.',
     image: coolClimateImg,
@@ -81,8 +93,8 @@ const projectsData = [
     featured: false,
   },
   {
-    id: 7,
-    name: 'Wild Cart',
+    id: 8,
+    name: 'Fill Cart',
     description: 'Feature-rich e-commerce application with product browsing, search, shopping cart, and checkout flow. State management via Redux Toolkit mirrors real-world retail experience.',
     image: wildCartImg,
     tech: ['React', 'Redux Toolkit', 'Node.js', 'Express'],
@@ -92,57 +104,57 @@ const projectsData = [
     featured: false,
   },
   {
-    id: 8,
-    name: 'Wild Songs',
+    id: 9,
+    name: 'Get Songs',
     description: 'Spotify-inspired music streaming platform with real-time playback, playlist creation, and intelligent recommendations powered by TensorFlow.js.',
     image: wildSongsImg,
     tech: ['React', 'Socket.io', 'TensorFlow.js', 'Node.js'],
     github: 'https://github.com/adityadhikale/WildSongs',
-    demo: null,
+    demo: 'https://wildsongs.netlify.app/',
     category: 'fullstack',
     featured: false,
   },
   {
-    id: 9,
+    id: 10,
     name: 'Daily Dose',
     description: 'News aggregator PWA pulling real-time headlines from NewsAPI. Features category filtering, bookmarking, and offline access via service workers.',
     image: dailyDoseImg,
     tech: ['React', 'NewsAPI', 'PWA', 'Tailwind CSS'],
     github: 'https://github.com/adityadhikale/DailyDose',
-    demo: null,
-    category: 'frontend',
-    featured: false,
-  },
-  {
-    id: 10,
-    name: 'Wild Notes',
-    description: 'Feature-rich note-taking tool with Markdown support, IndexedDB persistence, and a clean distraction-free writing experience.',
-    image: wildNotesImg,
-    tech: ['React', 'IndexedDB', 'Markdown', 'Tailwind CSS'],
-    github: 'https://github.com/adityadhikale/WildNotes',
-    demo: null,
-    category: 'frontend',
+    demo: 'https://getdailydose.netlify.app/',
+    category: 'fullstack',
     featured: false,
   },
   {
     id: 11,
-    name: 'Wild Text',
-    description: 'Text utility tool with CodeMirror integration, RegEx support, and various text transformation and analysis features.',
-    image: wildTextImg,
-    tech: ['React', 'CodeMirror', 'RegEx', 'Tailwind CSS'],
-    github: 'https://github.com/adityadhikale/WildText',
-    demo: null,
+    name: 'Post Notes',
+    description: 'Feature-rich note-taking tool with Markdown support, IndexedDB persistence, and a clean distraction-free writing experience.',
+    image: wildNotesImg,
+    tech: ['React', 'IndexedDB', 'Markdown', 'Tailwind CSS'],
+    github: 'https://github.com/adityadhikale/WildNotes',
+    demo: 'https://adityadhikale.github.io/WildNotes/',
     category: 'frontend',
     featured: false,
   },
   {
     id: 12,
-    name: 'Wild Shapes',
+    name: 'TypeShift',
+    description: 'Text utility tool with CodeMirror integration, RegEx support, and various text transformation and analysis features.',
+    image: wildTextImg,
+    tech: ['React', 'CodeMirror', 'RegEx', 'Tailwind CSS'],
+    github: 'https://github.com/adityadhikale/WildText',
+    demo: 'https://typeshift.netlify.app/',
+    category: 'frontend',
+    featured: false,
+  },
+  {
+    id: 13,
+    name: 'PlayWithShapes',
     description: 'Interactive SVG editor with shape creation, animations, and export capabilities. A playground for creating and manipulating vector graphics.',
     image: wildShapesImg,
     tech: ['React', 'SVG', 'Canvas API', 'Framer Motion'],
     github: 'https://github.com/adityadhikale/WildShapes',
-    demo: null,
+    demo: 'https://wildshapes.netlify.app/',
     category: 'frontend',
     featured: false,
   },
@@ -190,11 +202,10 @@ export default function Projects() {
                 <button
                   key={f.id}
                   onClick={() => setActive(f.id)}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                    active === f.id
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${active === f.id
                       ? 'accent-gradient text-white shadow-md'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                  }`}
+                    }`}
                 >
                   {f.label}
                 </button>
