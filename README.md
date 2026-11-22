@@ -1,126 +1,107 @@
 # Aditya Dhikale - Personal Portfolio
 
-A modern, responsive personal portfolio website built with React and Vite to showcase my skills, projects, and expertise as a full-stack developer.
+A fast, static personal portfolio built with [Astro](https://astro.build) to showcase my work across web development, fintech tools, reporting automation, and operations.
 
-## 🌐 Live Demo
-
-**Visit the live website:** [https://adityadhikale.netlify.app/](https://adityadhikale.netlify.app/)
+**Live site:** [https://adityadhikale.netlify.app/](https://adityadhikale.netlify.app/)
 
 ![Portfolio Preview](./src/assets/images/portfolio-preview.png)
 
-## 🌟 Features
+## Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Dark/Light Mode**: Toggle between dark and light themes
-- **Interactive UI**: Smooth animations and transitions powered by Framer Motion
-- **Dynamic Content**: Interactive sections for projects, skills, and contact information
-- **Particle Background**: Interactive particle background effect
-- **Type Animation**: Dynamic text typing animation on the hero section
-- **Contact Form**: Functional contact form with validation
-- **Social Media Integration**: Links to all professional social media profiles
-- **Resume Download**: Option to download resume directly from the website
+- **Static and fast**: Pure Astro with no UI framework. The only JavaScript is a small script for the menu and scroll effects.
+- **Responsive**: Layout adapts from phones to wide desktops.
+- **Project showcase**: Ten projects with a description, tech-stack tags, and live and code links, all driven from one data file.
+- **Accessible**: Skip link, keyboard-visible focus outlines, Escape closes the mobile menu, and `prefers-reduced-motion` is respected.
+- **SEO ready**: Canonical URL, Open Graph and Twitter cards, JSON-LD (`WebSite`, `Person`, `BreadcrumbList`), `sitemap.xml`, and `robots.txt`.
+- **Resume download**: Direct link to `public/resume.pdf`.
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- **React**: UI library for building the front-end
-- **Vite**: Fast build tool and development server
-- **Tailwind CSS**: For styling and responsive design
-- **Framer Motion**: For animations and transitions
-- **TypeWriter Effect**: For text animations
-- **tsParticles**: For the interactive particle background
-- **React Scroll**: For smooth scrolling between sections
-- **Heroicons**: For icons
-- **ESLint**: For code linting
+- **Astro**: Static site generator (`output: 'static'`)
+- **Plain CSS**: Single stylesheet with design tokens in `src/styles/global.css`
+- **Vanilla JS**: `public/motion.js` for the header, mobile menu, reveal-on-scroll, and the hero text rotator
+- **Google Fonts**: DM Sans, DM Mono, and Playfair Display
+- **Netlify**: Hosting and deployment
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or later)
-- npm or yarn
+- Node.js 22.23.4 or later (required by Astro)
+- npm 9.6.5 or later
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/adityadhikale/portfolio.git
-   cd portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. Open your browser and visit:
-   ```
-   http://localhost:5173
-   ```
-
-## 🔨 Building for Production
-
-To build the app for production:
+### Install and run
 
 ```bash
-npm run build
-# or
-yarn build
+git clone https://github.com/adityadhikale/portfolio.git
+cd portfolio
+npm install
+npm run dev
 ```
 
-The build files will be created in the `dist` directory.
+The dev server runs at `http://localhost:4321`.
 
-## 🧪 Running Tests
+### Scripts
 
-```bash
-npm run test
-# or
-yarn test
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Build the static site into `dist/` |
+| `npm run preview` | Preview the production build locally |
+
+## Project Structure
+
 ```
-
-## 📝 Project Structure
-
-```
+/public
+  AD.svg             # Favicon
+  resume.pdf         # Downloadable resume
+  motion.js          # Menu, scroll reveal, and hero rotator
+  robots.txt
+  sitemap.xml
+  _redirects
 /src
-  /assets          # Images, fonts, and other static assets
-  /components      # React components
-    /shared        # Reusable components
-    /Layout        # Layout components
-  /sections        # Main page sections (About, Projects, etc.)
-  /styles          # Global styles and Tailwind configurations
-  /utils           # Utility functions
-  App.jsx          # Main App component
-  main.jsx         # Entry point
+  /assets/images     # Profile picture and social preview image
+  /components        # Header.astro, Footer.astro
+  /data
+    projects.js      # Single source of truth for the project list
+  /layouts
+    BaseLayout.astro # <head>, SEO tags, JSON-LD, fonts
+  /pages
+    index.astro      # The single-page site
+  /styles
+    global.css       # All styles
+astro.config.mjs
+netlify.toml
 ```
 
-## 🔄 Deployment
+## Updating Content
 
-This portfolio is currently deployed on Netlify. You can also deploy it on other platforms like:
-- Netlify (current host)
-- Vercel
-- GitHub Pages
-- Firebase Hosting
+**Add or edit a project:** edit `src/data/projects.js`. Each entry takes:
 
-## 📄 License
+```js
+{
+  name: 'Project name',
+  type: 'Short category label',
+  description: 'One or two sentences.',
+  stack: ['Next.js', 'Supabase'], // optional
+  github: 'https://github.com/...', // optional
+  demo: 'https://...',              // optional
+}
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Projects appear in the order listed, so put the most important first. Live and code links show up automatically when present.
 
-## 📧 Contact
+**Change text, education, or experience:** edit `src/pages/index.astro`.
 
-Aditya Dhikale - adityadhikale03@gmail.com
+**Social preview image:** replace `src/assets/images/portfolio-preview.png`.
 
-Project Link: [https://github.com/adityadhikale/portfolio](https://github.com/adityadhikale/portfolio)
+## Deployment
 
-Live Website: [https://adityadhikale.netlify.app/](https://adityadhikale.netlify.app/)
+The site is deployed on Netlify. `netlify.toml` runs `npm run build` and publishes `dist/`, so pushing to `main` triggers a new deploy.
 
----
+## Contact
 
-Designed & Built with ❤️ by Aditya Dhikale
+Aditya Dhikale - [adityadhikale2003@gmail.com](mailto:adityadhikale2003@gmail.com)
+
+- GitHub: [github.com/adityadhikale](https://github.com/adityadhikale)
+- LinkedIn: [linkedin.com/in/aditya-dhikale-674643288](https://www.linkedin.com/in/aditya-dhikale-674643288/)
