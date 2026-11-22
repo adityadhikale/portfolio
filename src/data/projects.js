@@ -1,0 +1,83 @@
+// Single source of truth for the projects shown on the site, ordered by importance.
+// `stack` is optional: add it per project and the chips appear automatically.
+// `demo` and `github` are both optional; the card shows whichever exist.
+export const projects = [
+  {
+    name: 'Investor CRM',
+    type: 'Internal CRM dashboard',
+    description: 'An internal CRM dashboard for managing investor contacts, groups, and follow-up tracking, built for the CREST Capital team.',
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    github: 'https://github.com/adityadhikale/investor-crm',
+    demo: 'https://investor-crm.crest-capital.com/',
+  },
+  {
+    name: 'CAS Parser',
+    type: 'Financial data parser',
+    description: 'Parses Consolidated Account Statements (CAS) from CDSL, NSDL, CAMS, and KFintech (Karvy) into structured, usable data.',
+    stack: ['Python', 'FastAPI', 'pandas', 'React', 'Tailwind CSS'],
+    github: 'https://github.com/adityadhikale/casparser',
+    demo: 'https://crest-casparser.onrender.com/',
+  },
+  {
+    name: 'Portfolio Review Generator',
+    type: 'Reporting automation',
+    description: 'Generates client portfolio Excel workbooks and quarterly review decks directly from broker holdings files.',
+    stack: ['Python', 'FastAPI', 'Vue', 'openpyxl', 'python-pptx'],
+    github: 'https://github.com/adityadhikale/portfolio-review-generator',
+  },
+  {
+    name: 'Inventory Optimizer',
+    type: 'Supply-chain analytics',
+    description: 'Replenishment-planning automation and dashboards that turn supply-chain data into useful decisions.',
+    stack: ['Python', 'Azure SQL', 'OR-Tools', 'Streamlit'],
+    github: 'https://github.com/adityadhikale/inventory-optimizer',
+  },
+  {
+    name: 'Expense Manager',
+    type: 'Personal finance app',
+    description: 'A full-stack finance manager for transaction tracking, budgeting, and clear visual reporting.',
+    stack: ['Next.js', 'TypeScript', 'Hono', 'Drizzle ORM', 'PostgreSQL'],
+    github: 'https://github.com/adityadhikale/Expense-Manager',
+    demo: 'https://expense-manager-lite.netlify.app/',
+  },
+  {
+    name: 'VidyaGram',
+    type: 'Education platform',
+    description: 'An educational platform that simplifies learning with easy access to course materials and video modules.',
+    stack: ['Next.js', 'Supabase', 'Gemini API', 'OpenAI API'],
+    github: 'https://github.com/adityadhikale/Vidyagram',
+    demo: 'https://vidyagram.vercel.app/',
+  },
+  {
+    name: 'Digital Gifts',
+    type: 'Web application',
+    description: 'A web application for creating and sharing personalised virtual gifts with a live reveal.',
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Framer Motion'],
+    github: 'https://github.com/adityadhikale/digital-gifts',
+    demo: 'https://digitalgifts.vercel.app/',
+  },
+  {
+    name: 'MyStubs',
+    type: 'Movie & TV tracker',
+    description: 'A personal app for tracking the movies and TV shows you watch, with search and trending suggestions from OMDb and TMDB.',
+    stack: ['React', 'Vite', 'Node.js', 'Express', 'Google Sheets'],
+    github: 'https://github.com/adityadhikale/mystubs',
+    demo: 'https://mystubs.netlify.app/',
+  },
+  {
+    name: 'Daily Dose',
+    type: 'News website',
+    description: 'A daily news website for searching the latest updates and browsing top stories by category, with a switchable choice of news sources.',
+    stack: ['React', 'Vite', 'Tailwind CSS', 'TanStack Query', 'GNews API'],
+    github: 'https://github.com/adityadhikale/daily-dose',
+    demo: 'https://getdailydose.netlify.app/',
+  },
+  {
+    name: 'TypeShift',
+    type: 'Text utility',
+    description: 'A text utility for transforming, formatting, and analysing text, from case conversion to readability checks.',
+    stack: ['React', 'TypeScript', 'Vite', 'Bootstrap'],
+    github: 'https://github.com/adityadhikale/TypeShift',
+    demo: 'https://typeshift.netlify.app/',
+  },
+];

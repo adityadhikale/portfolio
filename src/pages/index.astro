@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { projects } from '../data/projects';
+import profileImage from '../assets/images/profile/profile-picture.png';
+
+const schema = { '@context':'https://schema.org', '@graph':[
+  { '@type':'WebSite', name:'Aditya Dhikale', url:'https://adityadhikale.netlify.app/', inLanguage:'en-IN' },
+  { '@type':'Person', name:'Aditya Dhikale', url:'https://adityadhikale.netlify.app/', jobTitle:'Operations Analyst Intern', address:{ '@type':'PostalAddress', addressLocality:'Mumbai', addressCountry:'IN' }, sameAs:['https://github.com/adityadhikale','https://www.linkedin.com/in/aditya-dhikale-674643288/'] },
+  { '@type':'BreadcrumbList', itemListElement:[{ '@type':'ListItem', position:1, name:'Home', item:'https://adityadhikale.netlify.app/' }] },
+] };
+---
+<BaseLayout title="Aditya Dhikale | Portfolio" description="Aditya Dhikale works across web products, AI tools, operations, and business management." schema={schema}>
+  <Header />
+  <main id="main-content">
+    <section class="hero">
+      <div class="orbit-art" data-orbit aria-hidden="true"><span class="orbit-dot orbit-dot-one"></span><span class="orbit-dot orbit-dot-two"></span><span class="orbit-core"></span></div>
+      <div class="site-shell hero-copy">
+        <p class="eyebrow reveal">Aditya Dhikale · Product, operations, and technology</p>
+        <h1 class="reveal">I work on <span class="hero-rotator" data-rotator>products that solve practical problems.</span></h1>
+        <p class="hero-intro reveal">I work across web development, AI tools, operations, and management. I care about the technical work and the people and processes around it.</p>
+        <div class="hero-bottom reveal">
+          <div class="hero-links"><a class="pill pill-acid" href="#projects">View projects <span>↓</span></a><a class="pill" href="/resume.pdf" download>Download résumé <span>↓</span></a></div>
+          <p class="hero-note">Computer science, data, and global business.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-space">
+      <div class="site-shell bio-grid">
+        <div class="reveal"><div class="image-frame"><img src={profileImage.src} alt="Aditya Dhikale" width={profileImage.width} height={profileImage.height} loading="eager" /></div><div class="bio-details"><div><span>Based in</span>Mumbai, India</div><div><span>Learning across</span>Mumbai ↔ Dubai</div></div></div>
+        <div class="intro-copy reveal"><p class="eyebrow">About me</p><h2>Technology with business context.</h2><p>I like work that needs technical detail and an understanding of how people, teams, and processes use a product. I build web applications, automation, and data tools, while also learning how those systems fit into the wider business.</p><p>I have a B.Tech in Computer Science with Honours in Data Science and a Master of Global Business in Logistics & Supply Chain Management from SP Jain School of Global Management.</p><p><a class="pill" href="https://www.linkedin.com/in/aditya-dhikale-674643288/" target="_blank" rel="noreferrer">View LinkedIn <span>↗</span></a></p></div>
+      </div>
+    </section>
+
+    <section class="statement"><div class="site-shell statement-inner"><h2 class="reveal">Technology needs <em>context.</em></h2><p class="vertical-label">Product · Operations · Management</p></div></section>
+
+    <section id="projects" class="section-space">
+      <div class="site-shell">
+        <div class="work-header reveal"><div><p class="eyebrow">Projects</p><h2>Work so far.</h2></div><p>Fintech tools, reporting automation, dashboards, and web applications.</p></div>
+        <div class="project-list reveal">
+          {projects.map((project, index) => <article class="project"><span class="project-index">{String(index + 1).padStart(2, '0')}</span><div><p class="project-type">{project.type}</p><h3>{project.name}</h3>{project.stack && <div class="chip-row">{project.stack.map((item) => <span class="chip">{item}</span>)}</div>}</div><p class="project-description">{project.description}</p><div class="project-actions">{project.demo && <a class="project-action" href={project.demo} target="_blank" rel="noreferrer" aria-label={`${project.name} live project`}>Live <span>↗</span></a>}{project.github && <a class="project-action" href={project.github} target="_blank" rel="noreferrer" aria-label={`${project.name} source code on GitHub`}>Code <span>↗</span></a>}</div></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="background" class="section-space" style="padding-top:0"><div class="site-shell two-column"><div class="reveal"><p class="eyebrow">Background</p><h2>Education and experience.</h2></div><div class="timeline reveal"><article><time>Current</time><div><h3>Operations Analyst Intern</h3><p>CREST Capital · Develops and tests internal software tools, improves existing applications, resolves workflow issues, and supports lead and client onboarding.</p></div></article><article><time>2025 — 2026</time><div><h3>Master of Global Business</h3><p>Logistics & Supply Chain Management · SP Jain School of Global Management · Mumbai–Dubai</p></div></article><article><time>2025</time><div><h3>Business Development Associate Intern</h3><p>EmberCore Ventures Pvt Ltd · Worked across sales, operations, and technology on process and reporting work.</p></div></article><article><time>2021 — 2025</time><div><h3>B.Tech, Computer Science</h3><p>Honours in Data Science · Fr. Conceicao Rodrigues College of Engineering · GPA 8.54/10</p></div></article></div></div></section>
+    <section id="contact" class="contact-hero"><div class="site-shell"><p class="eyebrow reveal">Contact</p><h2 class="reveal">Want to talk about a project or role?</h2><p class="hero-intro reveal">Email me if you are working on a web product, AI tool, automation, or an operations problem that needs better software.</p><p class="reveal"><a class="pill" href="mailto:adityadhikale2003@gmail.com">adityadhikale2003@gmail.com ↗</a></p></div></section>
+  </main>
+  <Footer />
+</BaseLayout>

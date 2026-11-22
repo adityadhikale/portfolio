@@ -1,0 +1,22 @@
+---
+const links = [
+  ['About', '#about'],
+  ['Projects', '#projects'],
+  ['Background', '#background'],
+  ['Contact', '#contact'],
+];
+---
+
+<header class="site-header" data-header>
+  <div class="site-shell nav-wrap">
+    <a class="wordmark" href="/" aria-label="Aditya Dhikale home">AD<span>°</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+      <span class="sr-only">Toggle navigation</span>
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation" data-menu>
+      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+      <a class="nav-cta" href="mailto:adityadhikale2003@gmail.com">Email me <span>↗</span></a>
+    </nav>
+  </div>
+</header>
